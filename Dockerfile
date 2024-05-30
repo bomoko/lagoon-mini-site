@@ -32,4 +32,4 @@ ARG STATIC_FILE_LOCATION=https://github.com/bomoko/lagoon-mini-site/raw/main/def
 RUN apk add wget
 ENV STATIC_FILE_LOCATION=${STATIC_FILE_LOCATION}
 
-RUN wget -O /tmp/site.zip ${STATIC_FILE_LOCATION} && RUN unzip /tmp/site.zip -d /app
+RUN wget -O /tmp/site.zip ${STATIC_FILE_LOCATION} && unzip /tmp/site.zip -d /app
