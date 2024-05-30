@@ -31,5 +31,9 @@ FROM uselagoon/nginx:latest
 ARG STATIC_FILE_LOCATION=https://github.com/bomoko/lagoon-mini-site/raw/main/default.zip
 RUN apk add wget
 ENV STATIC_FILE_LOCATION=${STATIC_FILE_LOCATION}
+ARG DOWNLOAD_USERNAME=user
+ARG DOWNLOAD_PASSWORD=pass
+ENV DOWNLOAD_USERNAME=${DOWNLOAD_USERNAME}
+ENV DOWNLOAD_PASSWORD=${DOWNLOAD_PASSWORD}
 
-RUN wget -O /tmp/site.zip ${STATIC_FILE_LOCATION} && unzip /tmp/site.zip -d /app
+RUN wget --user ${DOWNLOAD_USERNAME} --password ${DOWNLOAD_PASSWORD} -O /tmp/site.zip ${STATIC_FILE_LOCATION} && unzip /tmp/site.zip -d /app
